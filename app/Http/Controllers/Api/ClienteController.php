@@ -11,12 +11,15 @@ use App\Models\Cliente;
 class ClienteController extends Controller
 {
     public function read(Request $request){
+        $user = new Cliente();
 
-        $clientes = new Cliente();
+        if($request->query("id")){
+            $cliente = $user->find($request->query("id"));
+        } else{
+            $cliente = $user->all();
+        }
 
-        $data = $clientes->all();        
-
-        return  response()->json($data,200);
+        return  response()->json($cliente,200);
     }
 
     public function create(Request $request){
@@ -28,6 +31,7 @@ class ClienteController extends Controller
         $cliente->phone = $request->input("phone");
         $cliente->email = $request->input("email");
         $cliente->city = $request->input("city");
+        $cliente->message = $request->input("message");
 
         $cliente->save();
 
@@ -49,10 +53,12 @@ class ClienteController extends Controller
 
         $clienteParticular = $cliente->find($idCliente);
 
-        $clienteParticular->name = $request->input("name");
-        $clienteParticular->isbn = $request->input("isbn");
-        $clienteParticular->author = $request->input("author");
-        $clienteParticular->edition = $request->input("edition");
+        $cliente->name = $request->input("name");
+        $cliente->lastname = $request->input("lastname");
+        $cliente->phone = $request->input("phone");
+        $cliente->email = $request->input("email");
+        $cliente->city = $request->input("city");
+        $cliente->message = $request->input("message");
 
 
         $clienteParticular->save();

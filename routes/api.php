@@ -1,9 +1,11 @@
 <?php
 
-use App\Models\Cliente;
+//use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ClienteController;
+
+/* creo falta ContacController */
 
 
 
@@ -23,18 +25,25 @@ use App\Http\Controllers\Api\ClienteController;
 });*/
 
 
-Route::post("/cliente",[ClienteController::class,'create']);
+Route::post("/clienteC",[ClienteController::class,'create']);
+Route::get("/clienteR",[ClienteController::class,'read']);
+Route::put("/clienteU",[ClienteController::class,'update']);
+Route::delete("/clienteD",[ClienteController::class,'delete']);
 
-Route::get("/clientes",[ClienteController::class,'read']);
+//API Formulario//
 
-Route::put("/cliente",[ClienteController::class,'update']);
+//Route::get("clienteR", [ClienteController::class,'read']);
 
-Route::delete("/cliente",[ClienteController::class,'delete']);
+Route::get('/lectura', [ClienteController::class,'read']);
+Route::post('/creacion', [ClienteController::class,'create']);
+Route::put('/actualizar', [ClienteController::class,'update']);
+
+
 
 //Contact Form//
 
-Route::post('/contact', [ContactController::class, 'enviarMensaje']);
+/* Route::post('/contact', [ContactController::class, 'enviarMensaje']); */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request){
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request){
     return $request->user();
-});
+});*/ 
