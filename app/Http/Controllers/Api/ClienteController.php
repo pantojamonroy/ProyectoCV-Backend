@@ -61,12 +61,12 @@ class ClienteController extends Controller
         $cliente->message = $request->input("message");
 
 
-        $clienteParticular->save();
+        $cliente->save();
 
         $message=[
             "message" => "Actualización Exitosa!!",
             "idCliente" => $request->query("id"),
-            "nameCliente"=>$clienteParticular->name
+            "nameCliente"=>$cliente->name
         ];
 
         return $message;
@@ -80,9 +80,9 @@ class ClienteController extends Controller
 
         $cliente = new Cliente();
 
-        $clienteParticular = $cliente->find($idCliente);
+        $cliente = $cliente->find($idCliente);
 
-        $clienteParticular->delete();
+        $cliente->delete();
 
         $message=[
             "message" => "Eliminación Exitosa!!",

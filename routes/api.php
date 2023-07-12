@@ -36,7 +36,7 @@ Route::delete("/clienteD",[ClienteController::class,'delete']);
 
 Route::get('/lectura', [ClienteController::class,'read']);
 Route::post('/creacion', [ClienteController::class,'create']);
-Route::put('/actualizar', [ClienteController::class,'update']);
+
 
 
 
