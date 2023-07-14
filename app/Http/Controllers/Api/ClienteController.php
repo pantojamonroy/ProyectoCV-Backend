@@ -22,6 +22,8 @@ class ClienteController extends Controller
         return  response()->json($cliente,200);
     }
 
+    //$cliente = clienteFront::createImageBitmap($request->all());
+
     public function create(Request $request){
 
         $cliente = new Cliente();
